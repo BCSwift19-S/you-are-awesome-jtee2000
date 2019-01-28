@@ -21,11 +21,11 @@ class ViewController: UIViewController {
 
     @IBAction func showMessagePressed(_ sender: UIButton) {
         
-        let messages = ["You Are Awesome",
-                        "You Are Great",
-                        "You Are Amazing",
+        let messages = ["You Are Awesome!",
+                        "You Are Great!",
+                        "You Are Amazing!",
                         "You Are Fantastic!",
-                        "You Are Da Bomb"]
+                        "You Are Da Bomb!"]
         var newindex = -1
         
         repeat {
