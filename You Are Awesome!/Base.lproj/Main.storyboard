@@ -46,7 +46,7 @@
                                     <action selector="showMessagePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FAD-9u-2Rn"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image0" translatesAutoresizingMaskIntoConstraints="NO" id="Yk3-CG-Joe">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yk3-CG-Joe">
                                 <rect key="frame" x="16" y="225" width="382" height="599"/>
                             </imageView>
                         </subviews>
@@ -74,7 +74,4 @@
             <point key="canvasLocation" x="53.600000000000001" y="22.906403940886701"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="image0" width="475" height="633"/>
-    </resources>
 </document>

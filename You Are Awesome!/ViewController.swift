@@ -14,8 +14,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var messageLabel: UITextField!
     @IBOutlet weak var awesomeImageView: UIImageView!
     var index = 0
-    var imageIndex = -1
     var awesomePlayer = AVAudioPlayer()
+    var soundindex = 0
+    var soundName = ""
+    var newindex = 0
     
 
     
@@ -24,39 +26,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
     }
-
-    @IBAction func showMessagePressed(_ sender: UIButton) {
-        
-        let messages = ["You Are Awesome!",
-                        "You Are Great!",
-                        "You Are Amazing!",
-                        "You Are Fantastic!",
-                        "You Are Da Bomb!"]
-        var newindex = -1
-        var soundindex = 0
-        var soundName = ""
-        
-        
-        //show text
+    
+    func nonRepeatingRandom(lastnumber: Int, maxval: Int) -> Int {
+        var newindex: Int
         repeat {
-            newindex = Int.random(in: 1...messages.count-1)
-        } while index == newindex
+            newindex = Int.random(in: 0..<maxval)
+        } while lastnumber == newindex
+        return newindex
+    }
+    
+    
+    func playSound(soundName: String) {
         
-        index = newindex
-        messageLabel.text = messages[index]
-        
-        //show an image
-        repeat {
-            newindex = Int.random(in: 0...9)
-        } while index == newindex
-        
-        awesomeImageView.image = UIImage(named: "image\(newindex)")
-       
         //play a sound
         repeat {
             soundindex = Int.random(in: 0...4)
         } while index == soundindex
-        soundName = "sound\(soundindex)"
+        
         
         //can we load in the file?
         if let sound = NSDataAsset(name: soundName){
@@ -67,10 +53,32 @@ class ViewController: UIViewController {
             } catch {
                 //if sound.data is not a valid audio file
                 print("ERROR: data in\(soundName) couldn't be played")
-                }
+            }
         } else {
             print("ERROR: file\(soundName) didn't load" )
         }
+        
+        
+    }
+
+    @IBAction func showMessagePressed(_ sender: UIButton) {
+        
+        let messages = ["You Are Awesome!",
+                        "You Are Great!",
+                        "You Are Amazing!",
+                        "You Are Fantastic!",
+                        "You Are Da Bomb!"]
+        
+        
+        //show text
+        index = nonRepeatingRandom(lastnumber: index, maxval: messages.count)
+        messageLabel.text = messages[index]
+        
+        //show an image
+        index = nonRepeatingRandom(lastnumber: index, maxval: 10)
+        awesomeImageView.image = UIImage(named: "image\(index)")
+       
+        playSound(soundName: "sound\(soundindex)")
 
     }
 }
