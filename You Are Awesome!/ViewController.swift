@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     }
     
     
-    func playSound(soundName: String) {
+    func playSound(soundName: String, audioPlayer: inout AVAudioPlayer) {
         
         //play a sound
         repeat {
@@ -48,8 +48,8 @@ class ViewController: UIViewController {
         if let sound = NSDataAsset(name: soundName){
             //check if sound.data is a sound file
             do{
-                try awesomePlayer = AVAudioPlayer(data: sound.data)
-                awesomePlayer.play()
+                try audioPlayer = AVAudioPlayer(data: sound.data)
+                audioPlayer.play()
             } catch {
                 //if sound.data is not a valid audio file
                 print("ERROR: data in\(soundName) couldn't be played")
@@ -78,7 +78,9 @@ class ViewController: UIViewController {
         index = nonRepeatingRandom(lastnumber: index, maxval: 10)
         awesomeImageView.image = UIImage(named: "image\(index)")
        
-        playSound(soundName: "sound\(soundindex)")
+        //play a sound
+        let soundName = "sound\(soundindex)"
+        playSound(soundName: soundName, audioPlayer: &awesomePlayer)
 
     }
 }
