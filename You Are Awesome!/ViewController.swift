@@ -12,6 +12,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var messageLabel: UITextField!
     var index = 0
+    var imageIndex = -1
+    
+    @IBOutlet weak var awesomeImageView: UIImageView!
     
     //Code below executes when the app first loads
     override func viewDidLoad() {
@@ -36,30 +39,13 @@ class ViewController: UIViewController {
         messageLabel.text = messages[index]
         
         
+        repeat {
+            newindex = Int.random(in: 0...9)
+        } while index == newindex
+        
+        awesomeImageView.image = UIImage(named: "image\(newindex)")
        
-//        messageLabel.text = messages[index]
-        
-//        if index == messages.count-1 {
-//            index = 0
-//        }
-//        index+=1
-        
-        
-        
-//        let message1 = "You Are Awesome!"
-//        let message2 = "You Are Great!"
-//        let message3 = "You Are Amazing!"
-//
-//        if messageLabel.text == message1 {
-//            messageLabel.text = message2
-//        } else if messageLabel.text == message2 {
-//                messageLabel.text = message3
-//        } else {
-//            messageLabel.text = message1
-//        }
-  
+
     }
-    
-    
 }
 
